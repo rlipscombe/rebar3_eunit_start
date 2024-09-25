@@ -33,6 +33,13 @@ do(State) ->
     Opts = rebar_state:get(State, eunit_opts, []),
     Applications = proplists:get_value(start_applications, Opts, []),
     {ok, _} = application:ensure_all_started(Applications),
+    Modules = proplists:get_value(start_modules, Opts, []),
+    lists:foreach(
+        fun(Module) ->
+            apply(Module, start, [])
+        end,
+        Modules
+    ),
     {ok, State}.
 
 -spec format_error(any()) -> iolist().
