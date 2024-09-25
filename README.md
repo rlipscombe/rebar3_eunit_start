@@ -13,13 +13,28 @@ over your tests.
 
 Add the plugin to your rebar config:
 
-    {project_plugins, [
-        {rebar3_eunit_start, {git, "https://github.com/rlipscombe/rebar3_eunit_start.git", {tag, "0.1.0"}}}
-    ]}.
+```erlang
+{project_plugins, [
+    {rebar3_eunit_start, {git, "https://github.com/rlipscombe/rebar3_eunit_start.git", {tag, "0.1.0"}}}
+]}.
+{provider_hooks, [{pre, [{eunit, {default, rebar3_eunit_start}}]}]}.
+```
 
-Then just run `rebar3 eunit` as normal:
+Configure the applications and/or modules to start:
+
+```erlang
+{eunit_opts, [
+    % ...
+    {start_applications, [telemetry]},
+    {start_modules, [test_helper]}
+]}.
+```
+
+Then run `rebar3 eunit` as normal:
 
     $ rebar3 eunit
+
+Before eunit runs your tests, the `telemetry` application will be started, and `test_helper:start()` will be called.
 
 ## Development
 
