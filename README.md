@@ -1,26 +1,33 @@
-rebar3_eunit_start
-=====
+# rebar3_eunit_start
 
-A rebar plugin
+A rebar plugin that allows you to run code before `rebar3 eunit` does its thing.
 
-Build
------
+It's useful for starting applications (such as `telemetry`) that your code depends on, without scattering fixtures all
+over your tests.
+
+## Build
 
     $ rebar3 compile
 
-Use
----
+## Use
 
 Add the plugin to your rebar config:
 
-    {plugins, [
-        {rebar3_eunit_start, {git, "https://host/user/rebar3_eunit_start.git", {tag, "0.1.0"}}}
+    {project_plugins, [
+        {rebar3_eunit_start, {git, "https://github.com/rlipscombe/rebar3_eunit_start.git", {tag, "0.1.0"}}}
     ]}.
 
-Then just call your plugin directly in an existing application:
+Then just run `rebar3 eunit` as normal:
 
+    $ rebar3 eunit
 
-    $ rebar3 rebar3_eunit_start
-    ===> Fetching rebar3_eunit_start
-    ===> Compiling rebar3_eunit_start
-    <Plugin Output>
+## Development
+
+Add the plugin to your rebar config as above, and then add symlink from the `plugins` directory:
+
+```
+cd _build/default/plugins/
+ln -sf path/to/rebar3_eunit_start .
+```
+
+When you make changes to the plugin, delete the `ebin` directory in _this_ directory, so that rebar recompiles it.

@@ -1,14 +1,14 @@
-{application, rebar3_eunit_start,
- [{description, "A rebar plugin"},
-  {vsn, "0.1.0"},
-  {registered, []},
-  {applications,
-   [kernel,
-    stdlib
-   ]},
-  {env,[]},
-  {modules, []},
+{application, rebar3_eunit_start, [
+    {description, "Start applications before rebar3 eunit"},
+    {vsn, "0.1.0"},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib
+    ]},
+    {env, []},
+    {modules, []},
 
-  {licenses, ["Apache-2.0"]},
-  {links, []}
- ]}.
+    {licenses, ["Apache-2.0"]},
+    {links, []}
+]}.
