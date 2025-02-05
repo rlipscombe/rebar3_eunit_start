@@ -30,7 +30,9 @@ Configure the applications and/or modules to start:
 ]}.
 ```
 
-It starts the listed applications and then the listed modules.
+It starts the listed applications and then the listed modules. The applications are passed to
+`application:ensure_all_started/1`. For each module listed, the `Module:start/0` function is called. The modules
+are started in the order given.
 
 Then run `rebar3 eunit` as normal:
 
