@@ -30,6 +30,8 @@ Configure the applications and/or modules to start:
 ]}.
 ```
 
+It starts the listed applications and then the listed modules.
+
 Then run `rebar3 eunit` as normal:
 
     $ rebar3 eunit
