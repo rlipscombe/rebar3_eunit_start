@@ -5,6 +5,8 @@ A rebar plugin that allows you to run code before `rebar3 eunit` does its thing.
 It's useful for starting applications (such as `telemetry`) that your code depends on, without scattering fixtures all
 over your tests.
 
+If you're looking for the equivalent for Common Test, that's here: https://github.com/rlipscombe/ct_ext/
+
 ## Use
 
 Add the plugin to your rebar config:
