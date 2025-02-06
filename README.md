@@ -5,10 +5,6 @@ A rebar plugin that allows you to run code before `rebar3 eunit` does its thing.
 It's useful for starting applications (such as `telemetry`) that your code depends on, without scattering fixtures all
 over your tests.
 
-## Build
-
-    $ rebar3 compile
-
 ## Use
 
 Add the plugin to your rebar config:
