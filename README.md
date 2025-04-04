@@ -12,10 +12,14 @@ If you're looking for the equivalent for Common Test, that's here: https://githu
 Add the plugin to your rebar config:
 
 ```erlang
-{project_plugins, [
-    {rebar3_eunit_start, {git, "https://github.com/rlipscombe/rebar3_eunit_start.git", {tag, "0.1.0"}}}
+{profiles, [
+    {test, [
+        {plugins, [
+            {rebar3_eunit_start, {git, "https://github.com/rlipscombe/rebar3_eunit_start.git", {tag, "0.1.0"}}}
+        ]},
+        {provider_hooks, [{pre, [{eunit, {default, rebar3_eunit_start}}]}]}
+    ]}
 ]}.
-{provider_hooks, [{pre, [{eunit, {default, rebar3_eunit_start}}]}]}.
 ```
 
 Configure the applications and/or modules to start:
